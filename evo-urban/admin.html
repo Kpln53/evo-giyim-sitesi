@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli | EVO</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Oswald:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+    <header id="header-placeholder"></header>
+
+    <main class="main-content admin-page">
+        <div class="admin-container">
+            <h1>YÖNETİM PANELİ</h1>
+
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="orders">SİPARİŞLER</button>
+                <button class="admin-tab-btn" data-tab="users">KULLANICILAR</button>
+                <button class="admin-tab-btn" data-tab="add-product">ÜRÜN EKLE</button>
+                <button class="admin-tab-btn" data-tab="manage-products">ÜRÜNLERİ YÖNET</button>
+            </div>
+
+            <div id="tab-orders" class="admin-tab-content active">
+                <div id="admin-orders-list">
+                    </div>
+            </div>
+
+            <div id="tab-users" class="admin-tab-content">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>E-posta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list-body">
+                        </tbody>
+                </table>
+            </div>
+
+            <div id="tab-add-product" class="admin-tab-content">
+                <form id="add-product-form" class="product-form">
+                    <div class="form-group">
+                        <label for="product-name">Ürün Adı</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Fiyat (Sadece sayı, örn: 999)</label>
+                        <input type="number" id="product-price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Açıklama</label>
+                        <textarea id="product-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-main-image-upload">Ana Görsel</label>
+                        <input type="file" id="product-main-image-upload" accept="image/*" required>
+                        <div class="image-preview" id="main-image-preview-container"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-thumbnails-upload">Küçük Görseller (Birden fazla seçilebilir)</label>
+                        <input type="file" id="product-thumbnails-upload" accept="image/*" multiple>
+                        <div class="image-preview" id="thumbnails-preview-container"></div>
+                    </div>
+                    <button type="submit" class="auth-btn">Ürünü Ekle</button>
+                </form>
+            </div>
+            
+            <div id="tab-manage-products" class="admin-tab-content">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Fiyat</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="manage-product-list-body">
+                        </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/loader.js"></script> 
+</body>
+</html>

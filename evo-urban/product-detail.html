@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Detayı | EVO</title> <link rel="icon" type="image/png" href="favicon.png"> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Oswald:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+    <header id="header-placeholder"></header>
+
+    <main class="product-detail-page main-content">
+        <div class="product-layout">
+            
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="" alt="Yükleniyor...">
+                </div>
+                <div class="thumbnail-grid">
+                    </div>
+            </div>
+
+            <div class="product-details">
+                <h1 class="product-title">Yükleniyor...</h1>
+                <p class="product-price"></p>
+                <p class="product-short-desc"></p>
+
+                <div class="seperator"></div>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <label for="size-select">BEDEN:</label>
+                        <div class="size-selector" id="size-select">
+                            <button class="size-btn" data-value="S">S</button>
+                            <button class="size-btn active" data-value="M">M</button>
+                            <button class="size-btn" data-value="L">L</button>
+                            <button class="size-btn" data-value="XL">XL</button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <label for="quantity-select">ADET:</label>
+                        <div class="quantity-selector" id="quantity-select">
+                            <button class="quantity-btn" id="decrease-quantity" aria-label="Adeti Azalt">-</button>
+                            <input type="text" id="quantity-input" value="1" readonly>
+                            <button class="quantity-btn" id="increase-quantity" aria-label="Adeti Artır">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-to-cart-btn">SEPETE EKLE</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/loader.js"></script> 
+</body>
+</html>

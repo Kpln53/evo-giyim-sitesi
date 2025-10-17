@@ -1,0 +1,1554 @@
+/* ======================================= */
+/* 0. GENEL KURALLAR VE ROOT DEĞERLERİ     */
+/* ======================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #000000;      /* Siyah */
+    --color-secondary: #FFFFFF;    /* Beyaz */
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--color-primary);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px 0 -5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ======================================= */
+/* 1. HEADER (ŞEFFAF VE BEYAZ) STİLLERİ    */
+/* ======================================= */
+
+#main-header {
+    background-color: transparent; /* ARKA PLAN ŞEFFAF */
+    padding: 25px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* ORTA LOGO STİLİ */
+.header-logo-img {
+    height: 160px; 
+    width: 160px;
+    display: block;
+}
+.logo-center {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 5px; 
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    transition: opacity 0.3s ease-in-out;
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* SOL: HAMBURGER İKONU */
+.main-nav a {
+    color: var(--color-primary); 
+    font-size: 30px;
+    display: flex; 
+    align-items: center;
+    text-decoration: none;
+     border: 1px solid var(--color-primary); /* Siyah kenarlık */
+    padding: 8px 15px;                      /* Buton içi boşluk */
+    border-radius: 50px;                    /* Oval şekil için */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Yumuşak geçiş */
+}
+.menu-toggle:hover {
+    background-color: var(--color-primary); /* Arkaplan siyah olsun */
+    color: var(--color-secondary);          /* İkon beyaz olsun */
+    }
+.main-nav a .fas {
+    margin-right: 8px; 
+    font-size: 25px; /* İkonu biraz küçültebiliriz */
+
+}
+.main-nav a .menu-text {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem; 
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    transition: color 0.3s ease; /* Sadece rengin geçişini yumuşat */
+
+}
+.menu-toggle:hover .menu-text {
+    color: var(--color-secondary); /* Yazı da beyaz olsun */
+    }
+/* SAĞ: İŞLEM İKONLARI VE ARAMA */
+.utility-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* İkonlar ve arama çubuğu arasına boşluk koyar */
+}
+
+.utility-icons a.icon-link { /* Sadece profil ve sepet ikonlarına etki eder */
+    color: var(--color-primary);
+    font-size: 18px;
+}
+
+/* ARAMA ÇUBUĞU STİLLERİ (GÜNCELLENDİ) */
+.search-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 38px;
+    height: 38px;
+    transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    border: 1px solid var(--color-primary);
+    border-radius: 50px;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0 45px 0 15px;
+    border: none;
+    background: transparent;
+    color: var(--color-secondary); /* Yazı rengi beyaz */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    transition: opacity 0.4s ease;
+}
+
+.search-input::placeholder {
+    color: var(--color-secondary);
+    opacity: 0.7;
+}
+
+.search-icon-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    width: 38px;
+    padding: 0;
+    transition: color 0.4s ease-in-out;
+}
+
+/* GENİŞLEME ETKİSİ (HOVER & FOCUS-WITHIN) */
+.search-form:hover,
+.search-form:focus-within {
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: var(--color-secondary);
+}
+
+.search-form:hover .search-input,
+.search-form:focus-within .search-input {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-form:hover .search-icon-btn,
+.search-form:focus-within .search-icon-btn {
+    color: var(--color-secondary);
+}
+
+/* ======================================= */
+/* 2. KAHRAMAN ALANI (HERO) STİLLERİ       */
+/* ======================================= */
+
+#hero-section {
+    position: relative;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/hero-urban.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    color: var(--color-secondary);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    z-index: 10;
+}
+
+.hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+    line-height: 0.9;
+}
+
+.hero-subtitle {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 2px solid;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.primary-btn {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-secondary); 
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-primary);
+}
+
+/* ======================================= */
+/* 3. GÖRSEL KATEGORİLER (ANA SAYFA)       */
+/* ======================================= */
+.category-text-wrapper {
+    position: relative; /* İçindeki .hover-text'i konumlandırmak için gerekli */
+    z-index: 2;
+    color: var(--color-secondary);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    text-align: center; /* Metinlerin ortalandığından emin olalım */
+}
+.main-text {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    /* Yukarı kayma animasyonu için yumuşak geçiş */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hover-text {
+    display: block;
+    font-family: 'Roboto Mono', monospace; /* Farklı bir fontla daha şık durabilir */
+    font-size: 1.0rem; /* Daha küçük ve okunaklı */
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+    /* Konumlandırma ve başlangıç durumu */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%; /* Başlangıçta ana metnin hemen altında */
+    opacity: 0; /* Başlangıçta görünmez */
+    
+    /* Belirme ve yukarı kayma animasyonu için yumuşak geçiş */
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.category-box:hover .main-text {
+    transform: translateY(-15px); /* Ne kadar yukarı çıkacağını belirler */
+}
+.category-box:hover .hover-text {
+    opacity: 1; /* Görünür yap */
+    transform: translateY(5px); /* Ana metnin altına yerleşeceği son konum */
+}
+#visual-categories {
+    padding: 80px 0;
+}
+
+.category-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.category-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.category-box:hover {
+    transform: scale(1.02);
+}
+
+.category-text {
+    position: relative;
+    z-index: 2;
+    color: var(--color-secondary);
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.ust-giyim-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/kategori-ust.jpg'); 
+}
+
+.alt-giyim-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/kategori-alt.jpg');
+}
+
+.dis-giyim-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/kategori-dis.jpg');
+}
+
+/* ======================================= */
+/* 4. ÖNE ÇIKAN ÜRÜNLER (GRİD) STİLLERİ    */
+/* ======================================= */
+
+.section-padding {
+    padding: 80px 30px;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.product-card {
+    text-align: left;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px; 
+    transition: opacity 0.3s;
+}
+
+.product-card a {
+    text-decoration: none;
+    color: var(--color-primary);
+    display: block;
+}
+
+.product-card a:hover img {
+    opacity: 0.8;
+}
+
+.product-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.product-price {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    color: var(--color-primary); 
+    font-size: 0.9rem;
+}
+
+/* ======================================= */
+/* 5. TAM EKRAN (OFF-CANVAS) MENÜ STİLLERİ */
+/* ======================================= */
+
+#full-screen-menu {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 350px; 
+    height: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    z-index: 20000;
+    transform: translateX(-350px); 
+    transition: transform 0.4s ease-in-out;
+    padding: 60px 40px; /* Mobil için standart padding */
+    
+    /* VARSAYILAN (MOBİL): Kaydırma aktif olsun */
+    overflow-y: auto;
+}
+
+#full-screen-menu.is-open {
+    transform: translateX(0); 
+}
+
+.off-canvas-nav ul {
+    list-style: none;
+}
+
+.off-canvas-nav ul li {
+    margin: 3px 0;
+}
+
+.off-canvas-nav ul li a {
+    font-size: 1.0rem; 
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.off-canvas-nav ul li a:hover {
+    color: #999;
+    transform: translateX(10px);
+}
+
+.menu-footer-links {
+    margin-top: 50px; /* Mobil için üstten boşluk */
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.menu-footer-links a, .menu-social-icons a {
+    color: #999;
+    font-size: 1rem;
+    display: block;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+.menu-social-icons {
+    margin-top: 20px;
+}
+
+.menu-social-icons a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+/* ======================================= */
+/* 6. FOOTER (ALT BİLGİ) STİLLERİ          */
+/* ======================================= */
+
+#main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 60px 30px 20px;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-column h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #AAA;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-family: 'Roboto Mono', monospace;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: var(--color-secondary);
+}
+
+.footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-slogan {
+    font-size: 0.8rem;
+    color: #AAA;
+    margin-bottom: 20px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.footer-social a {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: #AAA;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* ======================================= */
+/* 7. MOBİL UYUMLULUK (MEDIA QUERIES)      */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 15px;
+    }
+    
+    .category-box {
+        height: 250px;
+    }
+    
+    .category-text {
+        font-size: 2rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-column {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #1a1a1a;
+    }
+    
+    .footer-container > div:last-child {
+        border-bottom: none;
+    }
+
+    .footer-column h3 {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .footer-social {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+/* ======================================= */
+/* 8. OFF-CANVAS MENÜ LOGO STİLLERİ      */
+/* ======================================= */
+
+.menu-header {
+    display: flex; /* Logoyu ve metni yan yana getir */
+    align-items: center; /* Dikey olarak ortala */
+    text-decoration: none; /* Link alt çizgisini kaldır */
+    color: var(--color-secondary); /* Metin rengi beyaz olsun */
+    margin-bottom: 20px; /* Çizgi ile menü arası boşluk */
+    padding-bottom: 20px; /* Logo ile çizgi arası boşluk */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Hafif şeffaf beyaz çizgi */
+}
+
+.menu-logo-img {
+    height: 90px; /* Menü içindeki logo daha küçük olmalı */
+    width: auto;
+    margin-right: 50px; /* Logo ile metin arasına boşluk bırak */
+}
+
+.menu-logo-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+/* ======================================= */
+/* 9. OFF-CANVAS MENÜ KAPATMA BUTONU      */
+/* ======================================= */
+
+.close-btn {
+    position: absolute; /* Menü içeriğine göre konumlandır */
+    top: 15px;
+    right: 25px;
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    color: var(--color-secondary); /* Beyaz renk */
+    font-size: 2.5rem; /* Boyutu büyüt, kolayca basılsın */
+    font-weight: 300;
+    line-height: 1; /* Dikey hizalamayı iyileştirir */
+    
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #999; /* Üzerine gelince hafif gri */
+}
+/* ======================================= */
+/* 10. KAPATMA BUTONUNU MASAÜSTÜNDE GİZLE */
+/* ======================================= */
+
+@media (min-width: 992px) {
+    /* Bu kodlar sadece ekran genişliği 992px ve üzeri olduğunda çalışır */
+    .close-btn {
+        display: none;
+    }
+}
+@media (min-width: 992px) {
+    #full-screen-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        /* Masaüstünde kaydırmayı devre dışı bırak */
+        overflow-y: hidden; 
+    }
+
+    .off-canvas-nav {
+        /* Masaüstünde alt bilgiyi aşağı itmek için boşluğu doldur */
+        flex-grow: 1;
+    }
+
+    .menu-footer-links {
+        /* Masaüstünde flexbox kullandığımız için marjine gerek yok */
+        margin-top: 0;
+    }
+}
+/* ======================================= */
+/* 12. ÜRÜN DETAY SAYFASI STİLLERİ         */
+/* ======================================= */
+
+.product-detail-page {
+    padding-top: 250px; /* Sabit header'ın altında başlaması için boşluk */
+    padding-bottom: 80px;
+}
+
+.product-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Masaüstünde 2 sütunlu yapı */
+    gap: 60px; /* Sütunlar arası boşluk */
+}
+
+/* Sütun 1: Görseller */
+.product-images .main-image img {
+    width: 100%;
+    height: auto;
+}
+
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 küçük görsel sığabilir */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.thumbnail-grid img {
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.thumbnail-grid img:hover,
+.thumbnail-grid img.active {
+    border-color: var(--color-primary); /* Seçili/hover olunca kenarlık */
+}
+
+/* Sütun 2: Bilgiler */
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.product-short-desc {
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.seperator {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 30px 0;
+}
+
+.option-group label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.size-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.size-btn {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    background-color: var(--color-secondary);
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.size-btn:hover,
+.size-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-primary);
+}
+
+.add-to-cart-btn {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-primary);
+    padding: 15px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: auto; /* Butonu her zaman en alta iter */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #333;
+    border-color: #333;
+}
+
+
+/* Ürün Detay Sayfası - Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .product-detail-page {
+        padding-top: 150px; /* Mobilde header daha az yer kaplar */
+    }
+    
+    .product-layout {
+        grid-template-columns: 1fr; /* Mobilde tek sütuna düşür */
+        gap: 40px;
+    }
+}
+/* ======================================= */
+/* 13. SEPET SAYACI VE BUTON STİLLERİ      */
+/* ======================================= */
+
+/* Sepet ikonu ve sayacını sarmalayan alan */
+.cart-icon-wrapper {
+    position: relative;
+    display: flex;
+}
+
+/* Sepetteki ürün sayısı balonu */
+#cart-item-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: var(--color-secondary);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.2s ease;
+    transform: scale(0); /* Başlangıçta gizli */
+}
+
+/* Sayı 0'dan büyükse balonu göster */
+#cart-item-count.visible {
+    transform: scale(1);
+}
+
+/* Sepete Ekle butonunun "eklendi" durumu için stil */
+.add-to-cart-btn.added {
+    background-color: #28a745; /* Yeşil renk */
+    border-color: #28a745;
+    cursor: not-allowed;
+}
+/* ======================================= */
+/* 14. ADET SEÇİCİ STİLLERİ                */
+/* ======================================= */
+
+/* Beden ve Adet gruplarını yan yana getir */
+.product-options {
+    display: flex;
+    align-items: flex-end; /* Dikeyde hizala */
+    gap: 30px; /* Aralarına boşluk koy */
+    margin-bottom: 30px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+}
+
+.quantity-btn, #quantity-input {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    background-color: var(--color-secondary);
+    border: none;
+    text-align: center;
+    height: 42px; /* Beden butonları ile aynı yükseklik */
+}
+
+.quantity-btn {
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 40px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: #f0f0f0;
+}
+
+#quantity-input {
+    width: 50px;
+    font-size: 1rem;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 10px 5px;
+}
+
+/* Chrome, Safari, Edge, Opera'da okları gizle */
+#quantity-input::-webkit-outer-spin-button,
+#quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* ======================================= */
+/* 15. SEPET SAYFASI STİLLERİ              */
+/* ======================================= */
+
+.cart-page {
+    background-color: #f9f9f9; /* Sayfa arkaplanı hafif gri */
+    padding: 60px 0;
+}
+
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.cart-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Sol sütun daha geniş */
+    gap: 40px;
+}
+
+/* Sol Sütun: Ürün Listesi */
+#cart-items-container .cart-item {
+    display: flex;
+    background-color: var(--color-secondary);
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    gap: 20px;
+}
+
+.cart-item-image img {
+    width: 100px;
+    height: auto;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.cart-item-details p {
+    font-family: 'Roboto Mono', monospace;
+    color: #666;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    padding: 0;
+}
+.remove-item-btn:hover { color: red; }
+
+.empty-cart-message {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* Sağ Sütun: Sipariş Özeti */
+.order-summary {
+    background-color: var(--color-secondary);
+    padding: 30px;
+    position: sticky; /* Sayfa kayarken sabit kalsın */
+    top: 150px;
+}
+
+.order-summary h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: 'Roboto Mono', monospace;
+}
+.summary-row.total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-primary);
+    padding: 15px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+.checkout-btn:hover { background-color: #333; }
+
+/* Sepet Sayfası Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .cart-layout {
+        grid-template-columns: 1fr; /* Mobilde tek sütuna düşür */
+    }
+    .order-summary {
+        position: static; /* Mobilde sabit kalmasın */
+    }
+}
+/* ======================================= */
+/* 16. GİRİŞ & KAYIT SAYFASI STİLLERİ      */
+/* ======================================= */
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 30px;
+    background-color: #f9f9f9;
+}
+
+.auth-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    padding: 40px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.auth-container h1 {
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    min-height: 1.2em; /* Hata mesajı olmasa bile boşluk bırakır */
+}
+
+.auth-btn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-primary);
+    padding: 15px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.auth-btn:hover { background-color: #333; }
+
+.auth-switch {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.auth-switch a { color: var(--color-primary); }
+/* ======================================= */
+/* 17. ÖDEME SAYFASI (CHECKOUT) STİLLERİ   */
+/* ======================================= */
+
+.checkout-page {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.checkout-container h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.checkout-forms h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group.span-half {
+    grid-column: span 1;
+}
+
+.payment-info {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    background-color: #e9ecef;
+    padding: 15px;
+    border-left: 3px solid #6c757d;
+    margin-top: 30px;
+}
+
+/* Sağ Sütun: Sipariş Özeti */
+.order-summary-checkout {
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    position: sticky;
+    top: 150px;
+}
+
+#checkout-items-container .checkout-item {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-item-image img {
+    width: 60px;
+}
+
+.checkout-item-details {
+    flex-grow: 1;
+}
+
+.checkout-item-details h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+}
+.checkout-item-details p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+    .order-summary-checkout {
+        grid-row: 1; /* Özeti mobilde en üste al */
+        margin-bottom: 30px;
+    }
+}
+/* ======================================= */
+/* 18. PROFİL AÇILIR MENÜ STİLLERİ         */
+/* ======================================= */
+
+.profile-menu-container {
+    position: relative; /* Açılır menüyü buna göre konumlandıracağız */
+    display: flex;
+    align-items: center;
+}
+
+.profile-dropdown {
+    display: none; /* Başlangıçta gizli */
+    position: absolute;
+    top: 100%; /* İkonun hemen altında başlasın */
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 150px;
+    z-index: 1001;
+    margin-top: 10px; /* İkon ile arasında boşluk */
+}
+
+/* JavaScript ile .active class'ı eklenince menüyü göster */
+.profile-dropdown.active {
+    display: block;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--color-primary);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f9f9f9;
+}
+/* ======================================= */
+/* 19. SİPARİŞLERİM SAYFASI STİLLERİ       */
+/* ======================================= */
+
+.orders-page {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.orders-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.orders-container h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.order-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.order-header strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+}
+
+.order-status {
+    background-color: #ffc107; /* Sarı */
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.order-body {
+    padding: 20px;
+}
+
+.order-product-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.order-product-item:last-child {
+    margin-bottom: 0;
+}
+
+.order-product-item img {
+    width: 60px;
+    height: auto;
+}
+
+.empty-orders-message {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+}
+/* ======================================= */
+/* 20. YÖNETİCİ PANELİ STİLLERİ            */
+/* ======================================= */
+
+.admin-page {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.admin-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.admin-container h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.admin-order-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.admin-order-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.admin-order-body {
+    padding: 20px;
+}
+
+/* Durum Değiştirme Alanı */
+.status-changer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-changer label {
+    font-weight: 700;
+}
+
+.order-status-select {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+}
+
+/* Durumlara göre renkler */
+.status-alindi { background-color: #ffc107; }
+.status-hazirlaniyor { background-color: #007bff; color: white; }
+.status-kargoda { background-color: #fd7e14; color: white; }
+.status-teslim-edildi { background-color: #28a745; color: white; }
+/* ======================================= */
+/* 21. YÖNETİCİ PANELİ SEKMELERİ VE FORMLARI */
+/* ======================================= */
+
+.admin-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+.admin-tab-btn {
+    padding: 15px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    border-bottom: 3px solid transparent;
+}
+
+.admin-tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.admin-tab-content {
+    display: none; /* Varsayılan olarak tüm içerikleri gizle */
+}
+
+.admin-tab-content.active {
+    display: block; /* Sadece aktif olanı göster */
+}
+
+/* Kullanıcı Tablosu Stilleri */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.user-table th {
+    background-color: #f9f9f9;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Ürün Ekleme Formu Stilleri */
+.product-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+}
+
+.product-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: 'Roboto Mono', monospace;
+    resize: vertical;
+}
+/* ======================================= */
+/* 22. ADMİN PANELİ GÖRSEL YÜKLEME STİLLERİ */
+/* ======================================= */
+
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    min-height: 120px;
+    background-color: #f9f9f9;
+}
+
+.image-preview img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+/* ======================================= */
+/* 23. ADMİN PANELİ SELECT STİLİ           */
+/* ======================================= */
+
+.product-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #fff;
+}
+/* ======================================= */
+/* 24. ADMİN PANELİ SİLME BUTONU STİLİ     */
+/* ======================================= */
+
+.delete-product-btn {
+    background-color: #dc3545; /* Kırmızı */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    transition: background-color 0.2s ease;
+}
+
+.delete-product-btn:hover {
+    background-color: #c82333; /* Koyu Kırmızı */
+}
+/* ======================================= */
+/* 25. ADMİN PANELİ STOK GİRİŞ STİLLERİ    */
+/* ======================================= */
+
+.size-stock-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 15px;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #eee;
+}
+
+.size-stock-grid label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
